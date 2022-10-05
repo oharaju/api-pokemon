@@ -19,22 +19,19 @@ async function fetchPokemon() {
   }
 }
 
-async function generatePokemon(pokemon) {
-  let response;
+async function generatePokemon() {
 
   try {
-    response = await fetchPokemon();
-
-    const {name} = response;
+    const response = await fetchPokemon();
 
     const div = document.createElement("div");
-    const namePokemon = document.querySelector("p");
+    const namePokemon = document.createElement("p");
     div.appendChild(namePokemon);
     container.appendChild(div);
 
-    namePokemon.innerHTML = `Nome: ${name} `; 
+    namePokemon.innerHTML = `Nome: ${response.name} `; 
 
-  } catch (err) {
+  } catch {
     generateMsgError();
   }
 }
@@ -49,7 +46,6 @@ function generateMsgError() {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  fetchPokemon();
   generatePokemon();
   clearInput();
 })
