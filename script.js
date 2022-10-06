@@ -25,16 +25,34 @@ async function generatePokemon() {
     const response = await fetchPokemon();
 
     const div = document.createElement("div");
-    div.classList.add('pokemon')
+    div.classList.add('pokemon');
+
     const namePokemon = document.createElement("p");
-    div.appendChild(namePokemon);
-    container.appendChild(div);
+    namePokemon.classList.add('namePokemon');
 
     namePokemon.innerHTML = `Nome: ${response.name} `;
+
+    div.appendChild(namePokemon);
+    div.appendChild(createImgPokemon(response.id));
+    container.appendChild(div);
 
   } catch {
     generateMsgError();
   }
+}
+
+function createImgPokemon(id) {
+  const imgPokemon = document.createElement("img");
+
+  const baseImageUrl = 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/';
+  const numbersCharactersId = String(id).length;
+  const numberMaxId = 3;
+  const numberZerosBeforeId = "0".repeat(numberMaxId - numbersCharactersId);
+  const parseId =  numberZerosBeforeId + id;
+
+  imgPokemon.src = baseImageUrl + parseId + ".png";
+  
+  return imgPokemon;
 }
 
 function clearNamePokemon() {
@@ -56,6 +74,6 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   generatePokemon();
-  clearNamePokemon()
+  clearNamePokemon();
   clearInput();
 })
