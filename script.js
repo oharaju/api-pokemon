@@ -25,14 +25,23 @@ async function generatePokemon() {
     const response = await fetchPokemon();
 
     const div = document.createElement("div");
+    div.classList.add('pokemon')
     const namePokemon = document.createElement("p");
     div.appendChild(namePokemon);
     container.appendChild(div);
 
-    namePokemon.innerHTML = `Nome: ${response.name} `; 
+    namePokemon.innerHTML = `Nome: ${response.name} `;
 
   } catch {
     generateMsgError();
+  }
+}
+
+function clearNamePokemon() {
+  const pokemon = document.querySelector('.pokemon');
+
+  if(pokemon) {
+    pokemon.remove();
   }
 }
 
@@ -47,5 +56,6 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   generatePokemon();
+  clearNamePokemon()
   clearInput();
 })
