@@ -30,12 +30,11 @@ async function generatePokemon() {
     const namePokemon = document.createElement("p");
     namePokemon.classList.add('namePokemon');
 
+    div.appendChild(createImgPokemon(response.id));
+    div.appendChild(namePokemon);
     namePokemon.innerHTML = `Nome: ${response.name} `;
 
-    div.appendChild(namePokemon);
-    div.appendChild(createImgPokemon(response.id));
     container.appendChild(div);
-
   } catch {
     generateMsgError();
   }
