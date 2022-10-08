@@ -1,3 +1,17 @@
-body {
+.hero {
     padding: 20px;
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+    background-color:rgba(221, 221, 216, 0.089);
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 8px;
+}
+
+.title {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    color:rgb(102, 74, 74);
 }
