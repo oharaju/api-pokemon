@@ -1,17 +1,65 @@
-.hero {
-    padding: 20px;
-    text-align: center;
+body {
+    background-color: #ECECEC;
+    padding: 60px 20px;
 }
 
 .container {
     padding: 20px;
-    background-color:rgba(221, 221, 216, 0.089);
-    border: 1px solid rgb(185, 185, 185);
-    border-radius: 8px;
+    background-color: #F6F6F6;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .title {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    color:rgb(102, 74, 74);
+    color: #383838;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.register {
+    display: flex;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.formInput {
+    padding: 16px;
+    border-radius: 10px 0 0 10px;
+    border: none;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    width: 100%;
+    outline: none;
+}
+
+.formBtn {
+    background-color: #FFFFFF;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0 10px 10px 0;
+    padding: 5px 20px;
+}
+
+.formBtn:hover {
+    background-color: #ffffff8e;
+}
+
+.cardPokemon {
+    background-color: #f4f7f7;
+    border-radius: 20px;
+    padding: 20px 0;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 2%), 0 2px 4px rgb(0 0 0 / 2%), 0 4px 8px rgb(0 0 0 / 2%), 0 8px 16px rgb(0 0 0 / 2%), 0 16px 32px rgb(0 0 0 / 2%), 0 32px 64px rgb(0 0 0 / 2%);
+}
+
+.cardImg {
+    padding: 0 10px;
+}
+
+.imgPokemon {
+    width: 250px;
+    height: 250px;
 }

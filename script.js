@@ -1,18 +1,18 @@
 const container = document.querySelector('.container');
 const form = document.querySelector('.register');
-const input = document.querySelector('.valueInput');
+const input = document.querySelector('.formInput');
 
 function clearInput() {
   input.value = '';
 }
 
 async function fetchPokemon() {
-  const valueInput = input.value;
+  const formInput = input.value;
 
-  if (valueInput.length != null && valueInput.length > 0) {
+  if (formInput.length != null && formInput.length > 0) {
     const options = {method: 'GET'};
 
-    const returnApi = await fetch('https://pokeapi.co/api/v2/pokemon/' + valueInput, options)
+    const returnApi = await fetch('https://pokeapi.co/api/v2/pokemon/' + formInput, options)
     const response = await returnApi.json();
 
     return response;

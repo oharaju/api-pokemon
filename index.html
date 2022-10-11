@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
     <link href="/styles.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b06f65387a.js" crossorigin="anonymous"></script>
     <title>Pokédex</title>
   </head>
   <body>
-    <section class="hero">
-      <div class="container">
-        <h1 class="title">Pokédex</h1>
+    <div class="container">
+      <h1 class="title">Pokédex</h1>
         <form class="register">
-          <input class="valueInput">
-          <button type="submit">Clique</button>
+          <input class="formInput">
+          <button class="formBtn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
-      </div>
-    </section>
+        <div class="cardPokemon">
+          <div class="cardImg">
+            <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" class="imgPokemon">
+          </div>
+        </div>
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>
