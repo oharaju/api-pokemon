@@ -1,6 +1,6 @@
 const container = document.querySelector('.container');
-const form = document.querySelector('.register');
-const input = document.querySelector('.formInput');
+const form = document.querySelector('.container__register');
+const input = document.querySelector('.container__formInput');
 
 function clearInput() {
   input.value = '';
