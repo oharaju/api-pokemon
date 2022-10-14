@@ -4,8 +4,8 @@ body {
 }
 
 .container {
+  background-image: url(./images/wallpaper-floresta.webp);
   padding: 20px;
-  background-color: #F6F6F6;
   font-size: 20px;
   border-radius: 10px;
   display: flex;
@@ -50,7 +50,7 @@ body {
 }
 
 .cardPokemon {
-  background-color: #f4f7f7;
+  background-color: #DBF6DB;
   border-radius: 20px;
   padding: 20px 0;
   box-shadow: 0 1px 2px rgb(0 0 0 / 2%), 0 2px 4px rgb(0 0 0 / 2%), 0 4px 8px rgb(0 0 0 / 2%), 0 8px 16px rgb(0 0 0 / 2%), 0 16px 32px rgb(0 0 0 / 2%), 0 32px 64px rgb(0 0 0 / 2%);
