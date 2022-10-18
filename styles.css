@@ -36,6 +36,10 @@ body {
   outline: none;
 }
 
+.container__formInput::placeholder {
+  font-style: italic;
+}
+
 .container__formBtn {
   background-color: #FFFFFF;
   border: none;
@@ -49,20 +53,19 @@ body {
   background-color: #ffffff8e;
 }
 
-.card {
+.card-pokemon {
   background-color: #DBF6DB;
   border-radius: 20px;
   padding: 20px 0;
   box-shadow: 0 1px 2px rgb(0 0 0 / 2%), 0 2px 4px rgb(0 0 0 / 2%), 0 4px 8px rgb(0 0 0 / 2%), 0 8px 16px rgb(0 0 0 / 2%), 0 16px 32px rgb(0 0 0 / 2%), 0 32px 64px rgb(0 0 0 / 2%);
 }
 
-.card__cardImg {
+.card-img {
   padding: 0 10px;
 }
 
-.imgPokemon {
-  width: 250px;
-  height: 250px;
+.img-pokemon {
+  height: 300px;
 }
 
 .div-actions {
@@ -82,7 +85,7 @@ body {
   cursor: pointer;
 }
 
-.div-actions__name-Pokemon {
+.name-pokemon {
   font-family: 'Roboto', sans-serif;
   text-align: center;
 }

@@ -25,11 +25,15 @@ async function generatePokemon() {
     const response = await fetchPokemon();
 
     const div = document.createElement("div");
-    div.classList.add('pokemon');
+    div.classList.add('card-pokemon');
 
-    const namePokemon = document.createElement("p");
-    namePokemon.classList.add('namePokemon');
+    const divSpace = document.createElement("div");
+    divSpace.classList.add('card-img');
 
+    const namePokemon = document.createElement("h3");
+    namePokemon.classList.add('name-pokemon');
+
+    div.appendChild(divSpace);
     div.appendChild(createImgPokemon(response.id));
     div.appendChild(namePokemon);
     namePokemon.innerHTML = `Nome: ${response.name} `;
@@ -42,6 +46,7 @@ async function generatePokemon() {
 
 function createImgPokemon(id) {
   const imgPokemon = document.createElement("img");
+  imgPokemon.classList.add('img-pokemon');
 
   const baseImageUrl = 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/';
   const numbersCharactersId = String(id).length;
@@ -55,7 +60,7 @@ function createImgPokemon(id) {
 }
 
 function clearNamePokemon() {
-  const pokemon = document.querySelector('.pokemon');
+  const pokemon = document.querySelector('.card-pokemon');
 
   if(pokemon) {
     pokemon.remove();
@@ -65,7 +70,7 @@ function clearNamePokemon() {
 function generateMsgError() {
   const msgError = document.createElement("p");
   const textError = "Pokemon não encontrado, tente novamente!";
-  form.appendChild(msgError);
+  container.appendChild(msgError);
   msgError.innerHTML = textError;
 }
 
