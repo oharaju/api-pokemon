@@ -40,6 +40,7 @@ async function generatePokemon() {
 
     container.appendChild(div);
   } catch {
+    // clearMsgError();
     generateMsgError();
   }
 }
@@ -69,9 +70,18 @@ function clearNamePokemon() {
 
 function generateMsgError() {
   const msgError = document.createElement("p");
+  msgError.classList.add('msg-error');
   const textError = "Pokemon não encontrado, tente novamente!";
   container.appendChild(msgError);
   msgError.innerHTML = textError;
+}
+
+function clearMsgError() {
+  const msgError = document.querySelector('.msg-error');
+
+  if(msgError) {
+    msgError.remove();
+  }
 }
 
 form.addEventListener('submit', (e) => {
@@ -79,5 +89,6 @@ form.addEventListener('submit', (e) => {
 
   generatePokemon();
   clearNamePokemon();
+  clearMsgError();
   clearInput();
 })
