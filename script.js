@@ -30,17 +30,26 @@ async function generatePokemon() {
     const divSpace = document.createElement("div");
     divSpace.classList.add('card-img');
 
+    div.appendChild(divSpace);
+
     const namePokemon = document.createElement("h3");
     namePokemon.classList.add('name-pokemon');
 
-    div.appendChild(divSpace);
-    div.appendChild(createImgPokemon(response.id));
-    div.appendChild(namePokemon);
+    divSpace.appendChild(createImgPokemon(response.id));
+    divSpace.appendChild(namePokemon);
+
     namePokemon.innerHTML = `Nome: ${response.name} `;
 
     container.appendChild(div);
+
+    const boxBtn = document.createElement("div");
+    boxBtn.classList.add('box-btn');
+
+    boxBtn.appendChild(createBtnBack());
+
+    container.appendChild(boxBtn);
+    
   } catch {
-    // clearMsgError();
     generateMsgError();
   }
 }
@@ -60,12 +69,37 @@ function createImgPokemon(id) {
   return imgPokemon;
 }
 
-function clearNamePokemon() {
+function clearPokemon() {
   const pokemon = document.querySelector('.card-pokemon');
+  const boxBtn = document.querySelector('.box-btn')
 
   if(pokemon) {
     pokemon.remove();
+    boxBtn.remove();
   }
+}
+
+function createBtnBack(id) {
+  const buttonVoltar = document.createElement("button");
+  buttonVoltar.classList.add('btn-actions');
+  buttonVoltar.innerHTML = 'voltar';
+
+  buttonVoltar.type = 'click';
+
+  const btnVoltarId = id - 1;
+
+  if (btnVoltarId > 0) {
+
+    buttonVoltar.addEventListener('click', () => {
+      clearPokemon();
+      generatePokemon(btnVoltarId);
+    })
+    
+  } else {
+    buttonVoltar.disabled = true;
+  }
+
+  return buttonVoltar;
 }
 
 function generateMsgError() {
@@ -88,7 +122,7 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   generatePokemon();
-  clearNamePokemon();
+  clearPokemon();
   clearMsgError();
   clearInput();
 })

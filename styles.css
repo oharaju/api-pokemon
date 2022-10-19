@@ -58,24 +58,25 @@ body {
   border-radius: 20px;
   padding: 20px 0;
   box-shadow: 0 1px 2px rgb(0 0 0 / 2%), 0 2px 4px rgb(0 0 0 / 2%), 0 4px 8px rgb(0 0 0 / 2%), 0 8px 16px rgb(0 0 0 / 2%), 0 16px 32px rgb(0 0 0 / 2%), 0 32px 64px rgb(0 0 0 / 2%);
+  margin-bottom: 20px;
 }
 
 .card-img {
-  padding: 0 10px;
+  padding: 0 20px;
 }
 
 .img-pokemon {
-  height: 300px;
+  height: 250px;
 }
 
-.div-actions {
+.box-btn {
   display: flex;
   justify-content: center;
   gap: 20px;
   margin-top: 20px;
 }
 
-.div-actions__btn-actions {
+.btn-actions {
   background-color: #FFCC01;
   color: #3264AF;
   font-weight: 600;
