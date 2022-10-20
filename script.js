@@ -19,12 +19,19 @@ async function fetchPokemon() {
   }
 }
 
-async function generatePokemon() {
+async function generatePokemon(pokemon) {
+  let response;
 
   try {
-    const response = await fetchPokemon();
+    response = await fetchPokemon(pokemon);
 
-    const div = document.createElement("div");
+  } catch {
+    generateMsgError();
+  }
+
+  const { name, id } = response;
+
+  const div = document.createElement("div");
     div.classList.add('card-pokemon');
 
     const divSpace = document.createElement("div");
@@ -35,23 +42,36 @@ async function generatePokemon() {
     const namePokemon = document.createElement("h3");
     namePokemon.classList.add('name-pokemon');
 
-    divSpace.appendChild(createImgPokemon(response.id));
+    divSpace.appendChild(createImgPokemon(id));
     divSpace.appendChild(namePokemon);
 
-    namePokemon.innerHTML = `Nome: ${response.name} `;
+    namePokemon.innerHTML = `Nome: ${name} `;
 
     container.appendChild(div);
 
     const boxBtn = document.createElement("div");
     boxBtn.classList.add('box-btn');
 
-    boxBtn.appendChild(createBtnBack());
+    boxBtn.appendChild(createBtnBack(id));
 
     container.appendChild(boxBtn);
+}
+
+function createBtnBack(id) {
+  const buttonVoltar = document.createElement("button");
+  buttonVoltar.classList.add('btn-actions');
+  buttonVoltar.innerHTML = 'voltar';
+
+  const btnVoltarId = id - 1;
+
+  buttonVoltar.addEventListener('click', () => {
+    clearPokemon();
+    generatePokemon(btnVoltarId);
+
+    console.log(btnVoltarId)
+  })
     
-  } catch {
-    generateMsgError();
-  }
+  return buttonVoltar;
 }
 
 function createImgPokemon(id) {
@@ -71,35 +91,12 @@ function createImgPokemon(id) {
 
 function clearPokemon() {
   const pokemon = document.querySelector('.card-pokemon');
-  const boxBtn = document.querySelector('.box-btn')
+  const boxBtn = document.querySelector('.box-btn');
 
   if(pokemon) {
     pokemon.remove();
     boxBtn.remove();
   }
-}
-
-function createBtnBack(id) {
-  const buttonVoltar = document.createElement("button");
-  buttonVoltar.classList.add('btn-actions');
-  buttonVoltar.innerHTML = 'voltar';
-
-  buttonVoltar.type = 'click';
-
-  const btnVoltarId = id - 1;
-
-  if (btnVoltarId > 0) {
-
-    buttonVoltar.addEventListener('click', () => {
-      clearPokemon();
-      generatePokemon(btnVoltarId);
-    })
-    
-  } else {
-    buttonVoltar.disabled = true;
-  }
-
-  return buttonVoltar;
 }
 
 function generateMsgError() {
