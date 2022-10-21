@@ -47,6 +47,7 @@ async function generatePokemon(pokemon) {
     boxBtn.classList.add('box-btn');
 
     boxBtn.appendChild(createBtnBack(id));
+    boxBtn.appendChild(createBtnNext(id));
 
     container.appendChild(boxBtn);
   } catch {
@@ -61,12 +62,37 @@ function createBtnBack(id) {
 
   const btnVoltarId = id - 1;
 
-  buttonVoltar.addEventListener('click', () => {
-    clearPokemon();
-    generatePokemon(btnVoltarId);
-  });
+  if(btnVoltarId > 0) {
+    buttonVoltar.addEventListener('click', () => {
+      clearPokemon();
+      generatePokemon(btnVoltarId);
+    })
+  } else {
+    buttonVoltar.disabled = true;
+    buttonVoltar.style.background = '#ffcc01a8';
+  }
     
   return buttonVoltar;
+}
+
+function createBtnNext (id) {
+  const buttonProximo = document.createElement("button");
+  buttonProximo.classList.add('btn-actions');
+  buttonProximo.innerHTML = 'próximo';
+
+  const btnProximoId = id + 1;
+
+  if(btnProximoId < 905) {
+    buttonProximo.addEventListener("click", () => {
+      clearPokemon();
+      generatePokemon(btnProximoId);
+    });
+  } else {
+    buttonProximo.disabled = true;
+    buttonProximo.style.background = '#ffcc01a8';
+  }
+
+  return buttonProximo;
 }
 
 function createImgPokemon(id) {
