@@ -6,13 +6,13 @@ function clearInput() {
   input.value = '';
 }
 
-async function fetchPokemon() {
-  const formInput = input.value;
+async function fetchPokemon(pokemon) {
+  const valuePokemon = input.value || pokemon;
 
-  if (formInput.length != null && formInput.length > 0) {
+  if (valuePokemon.length != null && valuePokemon.length > 0 || valuePokemon > 0) {
     const options = {method: 'GET'};
 
-    const returnApi = await fetch('https://pokeapi.co/api/v2/pokemon/' + formInput, options)
+    const returnApi = await fetch('https://pokeapi.co/api/v2/pokemon/' + valuePokemon, options)
     const response = await returnApi.json();
 
     return response;
@@ -20,18 +20,12 @@ async function fetchPokemon() {
 }
 
 async function generatePokemon(pokemon) {
-  let response;
 
   try {
     response = await fetchPokemon(pokemon);
+    const { name, id } = response;
 
-  } catch {
-    generateMsgError();
-  }
-
-  const { name, id } = response;
-
-  const div = document.createElement("div");
+    const div = document.createElement("div");
     div.classList.add('card-pokemon');
 
     const divSpace = document.createElement("div");
@@ -55,6 +49,9 @@ async function generatePokemon(pokemon) {
     boxBtn.appendChild(createBtnBack(id));
 
     container.appendChild(boxBtn);
+  } catch {
+    generateMsgError();
+  } 
 }
 
 function createBtnBack(id) {
@@ -67,9 +64,7 @@ function createBtnBack(id) {
   buttonVoltar.addEventListener('click', () => {
     clearPokemon();
     generatePokemon(btnVoltarId);
-
-    console.log(btnVoltarId)
-  })
+  });
     
   return buttonVoltar;
 }
